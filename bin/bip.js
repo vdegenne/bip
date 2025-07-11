@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import {bip} from '../dist/index.js';
+import bip from '../dist/index.js';
 
 bip();
