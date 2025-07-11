@@ -1,4 +1,46 @@
 {
 	"name": "@vdegenne/bip",
-	"version": "1.0"
+	"version": "1.0.1",
+	"type": "module",
+	"bin": {
+		"bip": "./bin/bip.js"
+	},
+	"devDependencies": {
+		"@types/node": "^24.0.13",
+		"@vdegenne/rollup": "^0.1.6",
+		"wireit": "^0.14.12"
+	},
+	"scripts": {
+		"build": "wireit"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"build:rollup",
+				"test"
+			]
+		},
+		"build:rollup": {
+			"command": "rollup -c",
+			"files": [
+				"./rollup.config.js",
+				"./tsconfig.json",
+				"./src/"
+			],
+			"output": [
+				"./dist/"
+			]
+		},
+		"test": {
+			"command": "node ./dist/index.js",
+			"dependencies": [
+				"build:rollup"
+			]
+		}
+	},
+	"files": [
+		"./dist/",
+		"./bin/",
+		"./audio/"
+	]
 }
