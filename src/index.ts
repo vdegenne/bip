@@ -1,5 +1,5 @@
 import {spawn} from 'child_process';
 
-export function bip() {
+export default function () {
 	spawn('play', ['./audio/beep.mp3']);
 }
